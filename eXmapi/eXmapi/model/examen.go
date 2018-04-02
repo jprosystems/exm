@@ -1,7 +1,7 @@
 package model
 
 type Examen struct {
-	CODE                       string `json:"CODE"`
+	EXAMENID                   string `json:"EXAMENID"`
 	SEMESTRE                   string `json:"SEMESTRE"`
 	COURS_GROUPE               string `json:"COURS_GROUPE"`
 	DESCRIPTION                string `json:"DESCRIPTION"`

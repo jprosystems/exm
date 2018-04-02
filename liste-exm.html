@@ -6,7 +6,6 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Welcome To | JPro Systems | Exam Manager | eXm | Liste des Examens</title>
     <!-- Favicon-->
-    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
     <link rel="icon" href="logo.png" type="image/png">
 
     <!-- Google Fonts -->
@@ -25,44 +24,34 @@
     <!-- JQuery DataTable Css -->
     <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
+    <!-- Sweetalert Css -->
+    <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!--  -->
+    <!-- Bootstrap Spinner Css -->
+    <link href="plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!--  -->
+   <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link href="css/themes/theme-black.css" rel="stylesheet" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        function getExmlist() {
-            $.get("http://localhost:8080/exmapi/examen/list", function(data, status){
-                if(status=="success")
-                {
-                    var tabledata = ''
-                    var cpt = 0;
-                    for(var i in data){
-                        tabledata += '<tr>'
-                        // tabledata += '<td>'+data[cpt].CODE+'</td>'
-                        tabledata += '<td>'+data[cpt].SEMESTRE+'</td>'
-                        tabledata += '<td>'+data[cpt].COURS_GROUPE+'</td>'
-                        tabledata += '<td>'+data[cpt].DESCRIPTION+'</td>'
-                        tabledata += '<td>'+data[cpt].LANGUE+'</td>'
-                        tabledata += '<td>'+data[cpt].NOMBRE_QUESTIONS+'</td>'
-                        tabledata += '<td>'+data[cpt].NOMBRE_POINTS_TOTAL+'</td>'
-                        tabledata += '<td>'+data[cpt].DUREE_MAXIMALE+'</td>'
-                        tabledata += '<td>'+data[cpt].DATE_HEURE_ACTIVATION+'</td>'
-                        tabledata += '<td>'+data[cpt].DATE_DERNIERE_MODIFICATION+'</td>'
-                        tabledata += '</tr>' 
-                        cpt++;     
-                    }
-                    $("#tabledataid").html(tabledata);
-                }
-            }); 
-        }
-    </script>
 </head>
 
-<body class="theme-black" onload="getExmlist()">
+<body class="theme-black" >
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -201,7 +190,6 @@
             <div class="block-header">
                 <h2>
                     EXM - EXAMEN
-                    <!-- <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small> -->
                 </h2>
             </div>
             <!-- Exportable Table -->
@@ -212,59 +200,38 @@
                             <h2>
                                 LISTE DES EXAMENS
                             </h2>
-                            <!-- <ul class="header-dropdown m-r--5">
+                            <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
+                                    <a href="javascript:void(0);" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#largeModal">
+                                        <!-- <i class="material-icons">add_circle_outline</i> -->
+                                        <span style="display: inline-block; height: 50px;">
+                                            <span class="material-icons">add_circle_outline</span>
+                                            <span style="position: relative; top: -6px;">Ajouter Examen</span>
+                                        </span>
                                     </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
                                 </li>
-                            </ul> -->
+                            </ul>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                <table id="example" class="display table-bordered table-striped table-hover dataTable" width="100%">
                                     <thead>
-                                        <tr onclick="getExmlist()">
+                                        <tr>
+                                            <th>Code</th>
                                             <th>Semestre</th>
-                                            <th>Cours-Groupe</th>
+                                            <th>CoursGroupe</th>
                                             <th>Description</th>
-                                            <th>Langue</th>
-                                            <th>Nombre De Questions</th>
-                                            <th>Nombre De Points Total</th>
-                                            <th>Duree Maximale</th>
-                                            <th>Date/Heure D'activation</th>
-                                            <th>Date Derniere Modification</th>
+                                            <th>Lng</th>
+                                            <th>#Questions</th>
+                                            <th>#PtsTotal</th>
+                                            <th>DuréeMax(mn)</th>
+                                            <th>Activation</th>
+                                            <th>DernièreModif</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>Semestre</th>
-                                            <th>Cours-Groupe</th>
-                                            <th>Description</th>
-                                            <th>Langue</th>
-                                            <th>Nombre De Questions</th>
-                                            <th>Nombre De Points Total</th>
-                                            <th>Duree Maximale</th>
-                                            <th>Date/Heure D'activation</th>
-                                            <th>Date Derniere Modification</th>
-                                        </tr>
-                                    </tfoot> -->
-                                    <tbody id="tabledataid">
-                                        <!-- 
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr> -->
-                                    </tbody>
+                                    <!-- <tbody>
+                                        
+                                    </tbody> -->
                                 </table>
                             </div>
                         </div>
@@ -275,20 +242,114 @@
         </div>
     </section>
 
+    <section>
+        <!-- Large Size -->
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document" style="background-color: white;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Enregstrer Examen</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="inputExam2" class="form-control" placeholder="SEMESTRE , Ex : HV-2018" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="inputExam3" class="form-control" placeholder="COURS GROUPE , Ex : GEL500-010" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="inputExam4" class="form-control" placeholder="DESCRIPTION , Ex : Description" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <div class="form-line">
+                                    <select id="inputExam5" class="form-control show-tick">
+                                        <option value="">-- Selectionnez Langue --</option>
+                                        <option value="EN">Anglais(EN)</option>
+                                        <option value="FR">Francais(FR)</option>
+                                        <option value="HT">Créole(HT)</option>
+                                    </select>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="number" id="inputExam8" class="form-control" placeholder="DUREE MAXIMALE(MN) , Ex : 120" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="demo-masked-input">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" id="inputExam9" class="form-control datetime" placeholder=" DATE HEURE ACTIVATION , Ex: 30/07/2016 23:59">
+                                            </div>
+                                        </div>
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="SubmitExam();" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
-
+    
     <!-- Select Plugin Js -->
     <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Slimscroll Plugin Js -->
     <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+    <!-- Bootstrap Notify Plugin Js  // Pour les Dialogs-->
+    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
+
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- SweetAlert Plugin Js // Pour les Dialogs-->
+    <!-- <script src="plugins/sweetalert/sweetalert.min.js"></script> -->
+    <script src="plugins/sweetalert/sweetalert2.0.min.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="plugins/autosize/autosize.js"></script>
+
+     <!-- Input Mask Plugin Js -->
+    <script src="plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -304,9 +365,200 @@
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/jquery-datatable.js"></script>
+    <!-- <script src="js/pages/ui/dialogs.js"></script> -->
+    <script src="js/pages/ui/modals.js"></script>
+    <script src="js/pages/forms/basic-form-elements.js"></script>
+    <!-- <script src="js/pages/forms/advanced-form-elements.js"></script> -->
+
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+
+    <script type="text/javascript">
+        //javascript pour masquer l'entré date time
+        var $demoMaskedInput = $('.demo-masked-input');
+        //Date Time
+        $demoMaskedInput.find('.datetime').inputmask('d.m.y h:s', { placeholder: '__.__.____ __:__', alias: "datetime", hourFormat: '24' });
+    </script>
+ 
+    <script type="text/javascript">
+ 
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "ajax": {
+                    "url": "http://localhost:8080/exmapi/examen/list",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "EXAMENID" },
+                    { "data": "SEMESTRE" },
+                    { "data": "COURS_GROUPE" },
+                    { "data": "DESCRIPTION" },
+                    { "data": "LANGUE" },
+                    { "data": "NOMBRE_QUESTIONS" },
+                    { "data": "NOMBRE_POINTS_TOTAL" },
+                    { "data": "DUREE_MAXIMALE" },
+                    { "data": "DATE_HEURE_ACTIVATION" },
+                    { "data": "DATE_DERNIERE_MODIFICATION" }
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf'
+                ]
+            } );
+        } );
+       
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var table = $('#example').DataTable();
+            $('#example tbody').on( 'click', 'tr', function () {
+                var code = this.getElementsByTagName("td")[0].textContent;
+                showCancelMessage(code);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        
+        function showCancelMessage(codeexm) {
+           
+            if(codeexm!='Loading...')
+            {
+                swal({
+                    title: "Faites votre choix?",
+                    text: "Vous pouvez choisir de Modifier ou de Supprimer l'examen sélectionné!",
+                    buttons: {
+                        cancel: "Annuler",
+                        delt: "Effacer",
+                        edit: "Editer",
+                        view: "Voir",
+                    },
+                })
+                .then((value) => {
+                  switch (value) {
+                    case "edit":
+                      swal("Pikachu fainted! You gained 500 XP!");
+                      break;
+                    case "delt":
+                        deleteExamen(codeexm);
+                      break;
+                    case "view":
+                      swal("Pikachu fainted! You gained 500 XP!");
+                      break;
+                  }
+                });
+            }  
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        function SubmitExam()
+        {
+            // var varEXAMENID = document.getElementById("inputExam1");
+            var varSEMESTRE = document.getElementById("inputExam2").value;
+            var varCOURS_GROUPE = document.getElementById("inputExam3").value;
+            var varDESCRIPTION = document.getElementById("inputExam4").value;
+            var varLANGUE = document.getElementById("inputExam5").value;
+            var varDUREE_MAXIMALE = document.getElementById("inputExam8").value;
+            var varDATE_HEURE_ACTIVATION = document.getElementById("inputExam9").value;
+            //U 2014-04-12 11:37:12Z
+            var req = "http://localhost:8080/exmapi/examen/create/"+varSEMESTRE+"/"+varCOURS_GROUPE+"/"+varDESCRIPTION+"/"+varLANGUE+"/"+varDUREE_MAXIMALE+"/"+varDATE_HEURE_ACTIVATION+""
+
+            $.get(req, function(data, status){
+                if(status=="success")
+                {
+                    alert(data)
+                    if(data != "erreur")
+                    {
+                        swal({
+                            title: "Enregistrement effectué !",
+                            text: "Examen < "+data+" > enregistré avec succès !",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);   
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Enregistrement non effectué !",
+                            text: "l'Examen n'est pas enregistré !",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);  
+                    }
+                }
+                else
+                {
+                    swal({
+                        title: "Enregistrement non effectué !",
+                        text: "l'Examen n'est pas enregistré !",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);  
+                }
+            }); 
+        }
+        
+    </script>
+
+    <script type="text/javascript">
+        function modifySemestre()
+        {
+            var varSemestre = table.getElementsByTagName("semestre");
+            var varCode = table.getElementsByTagName("code");
+            var req = "http://localhost:8080/exmapi/examen/"+varSemestre+"/"+varCode+"" 
+            $.get(req, function(data, status){
+                if(status=="success")
+                {
+                    alert("Good")
+                }
+            }); 
+        }
+    </script>
+
+    <script type="text/javascript">
+        function deleteExamen(codeexm)
+        {
+            var req = "http://localhost:8080/exmapi/examen/del/"+codeexm+"";
+            // alert(req);   
+            $.get(req, function(data, status){
+                if(status=="success")
+                {
+                    swal({
+                        title: "Suppression effectuée !",
+                        text: "Examen < "+codeexm+" > suprimé avec succès !",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                }
+                else
+                {
+                    swal({
+                        title: "Suppression non effectuée !",
+                        text: "Examen < "+codeexm+" > n'est pas suprimé !",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            }); 
+        }
+    </script>    
+
 </body>
 
 </html>
