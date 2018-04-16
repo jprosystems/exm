@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Welcome To | JPro Systems | Exam Manager | eXm | Liste des Examens</title>
+    <!-- Favicon-->
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Sweetalert Css -->
+    <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!--  -->
+    <!-- Bootstrap Spinner Css -->
+    <link href="plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!--  -->
+   <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="css/themes/theme-black.css" rel="stylesheet" />
+
+</head>
+
+<body class="theme-black" >
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+        <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">[ eXm ]</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">                    <
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">NOTIFIATION</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div id="nomUser" class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">N/A</div>
+                    <div id="mailUser" class="email">N/A</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a onclick="Deconnexion()" href="javascript:void(0);"><i class="material-icons">input</i>Se Déconnecter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MENU PRINCIPAL</li>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="material-icons">home</i>
+                            <span>Accueil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="liste-exm-prof.html">
+                            <i class="material-icons">assignment</i>
+                            <span>Examen</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2017 - 2018 <a href="javascript:void(0);">JPro Systems - Exam Manager [eXm] </a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 0.0.1
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>
+                    EXM - EXAMEN
+                </h2>
+            </div>
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                LISTE DES EXAMENS
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#largeModal">
+                                        <!-- <i class="material-icons">add_circle_outline</i> -->
+                                        <span style="display: inline-block; padding: 5px 10px; border: 2px solid #eee;">
+                                            <span class="material-icons">add_circle_outline</span>
+                                            <span style="position: relative; top: -7px;">Ajouter Examen</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table id="example" class="display table-bordered table-striped table-hover dataTable" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Semestre</th>
+                                            <th>CoursGroupe</th>
+                                            <th>Description</th>
+                                            <th>Lng</th>
+                                            <th>#Questions</th>
+                                            <th>#PtsTotal</th>
+                                            <th>DuréeMax(mn)</th>
+                                            <th>Activation</th>
+                                            <th>DernièreModif</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- <tbody>
+                                        
+                                    </tbody> -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Exportable Table -->
+        </div>
+    </section>
+
+    <section>
+        <!-- Large Size -->
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document" style="background-color: white;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Enregistrer Examen</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>SEMESTRE</label>
+                                        <input type="text" id="inputExam2" class="form-control" placeholder="Ex : HV-2018" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>COURS GROUPE</label>
+                                        <input type="text" id="inputExam3" class="form-control" placeholder="Ex : GEL500-010" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>DESCRIPTION</label>
+                                        <input type="text" id="inputExam4" class="form-control" placeholder="Ex : Mathématique" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <div class="form-line">
+                                        <label>LANGUAGE</label>
+                                    <select id="inputExam5" class="form-control show-tick">
+                                        <option value="">-- Selectionnez Langue --</option>
+                                        <option value="EN">Anglais(EN)</option>
+                                        <option value="FR">Francais(FR)</option>
+                                        <option value="HT">Créole(HT)</option>
+                                    </select>
+                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>DUREE MAXIMALE(MN)</label>
+                                        <input type="number" id="inputExam8" class="form-control" placeholder="Ex : 120" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>DATE HEURE ACTIVATION</label>
+                                <div class="demo-masked-input">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">date_range</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" id="inputExam9" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
+                                            </div>
+                                        </div>
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="SubmitExam();" class="btn btn-link waves-effect">SOUMETTRE</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">ANNULER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- Select Plugin Js -->
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Bootstrap Notify Plugin Js  // Pour les Dialogs-->
+    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- SweetAlert Plugin Js // Pour les Dialogs-->
+    <!-- <script src="plugins/sweetalert/sweetalert.min.js"></script> -->
+    <script src="plugins/sweetalert/sweetalert2.0.min.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="plugins/autosize/autosize.js"></script>
+
+     <!-- Input Mask Plugin Js -->
+    <script src="plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="js/admin.js"></script>
+    <script src="js/pages/tables/jquery-datatable.js"></script>
+    <!-- <script src="js/pages/ui/dialogs.js"></script> -->
+    <script src="js/pages/ui/modals.js"></script>
+    <script src="js/pages/forms/basic-form-elements.js"></script>
+    <!-- <script src="js/pages/forms/advanced-form-elements.js"></script> -->
+
+
+    <!-- Demo Js -->
+    <script src="js/demo.js"></script>
+
+    <script type="text/javascript">
+        //javascript pour masquer l'entré date time
+        var $demoMaskedInput = $('.demo-masked-input');
+        //Date Time
+        $demoMaskedInput.find('.datetime').inputmask('d.m.y h:s', { placeholder: '__.__.____ __:__', alias: "datetime", hourFormat: '24' });
+    </script>
+ 
+    <script type="text/javascript">
+ 
+        $(document).ready(function() {
+            // $('#example').dataTable( {
+            //       "ordering": false
+            // } );
+            $('#example').DataTable( {
+                "ordering": false,
+                "ajax": {
+                    "url": "http://localhost:8080/exmapi/examen/list",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "EXAMENID" },
+                    { "data": "SEMESTRE" },
+                    { "data": "COURS_GROUPE" },
+                    { "data": "DESCRIPTION" },
+                    { "data": "LANGUE" },
+                    { "data": "NOMBRE_QUESTIONS" },
+                    { "data": "NOMBRE_POINTS_TOTAL" },
+                    { "data": "DUREE_MAXIMALE" },
+                    { "data": "DATE_HEURE_ACTIVATION" },
+                    { "data": "DATE_DERNIERE_MODIFICATION" }
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf'
+                ]
+            } );
+        } );
+        
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var table = $('#example').DataTable();
+            $('#example tbody').on( 'click', 'tr', function () {
+                var code = this.getElementsByTagName("td")[0].textContent;
+                showCancelMessage(code);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        
+        function showCancelMessage(codeexm) {
+           
+            if(codeexm!='Loading...')
+            {
+                swal({
+                    title: "Faites votre choix?",
+                    text: "Vous pouvez choisir de Modifier ou de Supprimer l'examen sélectionné!",
+                    buttons: {
+                        cancel: "Annuler",
+                        delt: "Effacer",
+                        edit: "Editer",
+                        view: "Voir",
+                    },
+                })
+                .then((value) => {
+                  switch (value) {
+                    case "edit":
+                      swal("Vous allez Modifier");
+                      break;
+                    case "delt":
+                        deleteExamen(codeexm);
+                      break;
+                    case "view":
+                      swal("Vous allez Voir");
+                      break;
+                  }
+                });
+            }  
+        }
+    </script>
+
+    <script type="text/javascript">
+        function SubmitExam()
+        {
+            // var varEXAMENID = document.getElementById("inputExam1");
+            var varSEMESTRE = document.getElementById("inputExam2").value;
+            var varCOURS_GROUPE = document.getElementById("inputExam3").value;
+            var varDESCRIPTION = document.getElementById("inputExam4").value;
+            var varLANGUE = document.getElementById("inputExam5").value;
+            var varDUREE_MAXIMALE = document.getElementById("inputExam8").value;
+            var varDATE_HEURE_ACTIVATION = document.getElementById("inputExam9").value;
+            //U 2014-04-12 11:37:12Z
+            var req = "http://localhost:8080/exmapi/examen/create/"+varSEMESTRE+"/"+varCOURS_GROUPE+"/"+varDESCRIPTION+"/"+varLANGUE+"/"+varDUREE_MAXIMALE+"/"+varDATE_HEURE_ACTIVATION+""
+
+            if((varSEMESTRE=="")||(varCOURS_GROUPE=="")||(varDESCRIPTION=="")||(varLANGUE=="")||(varDUREE_MAXIMALE=="")||(varDATE_HEURE_ACTIVATION==""))
+            {
+                swal({
+                    title: "Attention !",
+                    text: "Corriger les champs SVP !",
+                    timer: 2000,
+                    showConfirmButton: false
+                 }); 
+            }
+            else
+            {
+                $.get(req, function(data, status){
+                    if(status=="success")
+                    {
+                        if(data != "erreur")
+                        {
+                            swal({
+                                title: "Enregistrement effectué !",
+                                text: "Examen < "+data+" > enregistré avec succès !",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2000);   
+                        }
+                        else
+                        {
+                            swal({
+                                title: "Enregistrement non effectué !",
+                                text: "l'Examen n'est pas enregistré !",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            }, 2000);  
+                        }
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Enregistrement non effectué !",
+                            text: "l'Examen n'est pas enregistré !",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);  
+                    }
+                }); 
+            }    
+        }
+        
+    </script>
+
+    <script type="text/javascript">
+        function modifySemestre()
+        {
+            var varSemestre = table.getElementsByTagName("semestre");
+
+            var varCode = table.getElementsByTagName("code");
+            var req = "http://localhost:8080/exmapi/examen/"+varSemestre+"/"+varCode+"" 
+            $.get(req, function(data, status){
+                if(status=="success")
+                {
+                    alert("Good")
+                }
+            }); 
+        }
+    </script>
+
+    <script type="text/javascript">
+        function deleteExamen(codeexm)
+        {
+            var req = "http://localhost:8080/exmapi/examen/del/"+codeexm+"";
+            // alert(req);   
+            $.get(req, function(data, status){
+                if(status=="success")
+                {
+                    swal({
+                        title: "Suppression effectuée !",
+                        text: "Examen < "+codeexm+" > suprimé avec succès !",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                }
+                else
+                {
+                    swal({
+                        title: "Suppression non effectuée !",
+                        text: "Examen < "+codeexm+" > n'est pas suprimé !",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            }); 
+        }
+    </script>    
+    <script type="text/javascript">
+        function Deconnexion()
+        {
+            localStorage.removeItem("user");
+            window.location.replace("http://localhost/eXm/sign-in.html");
+        }
+    </script>
+
+    <script type="text/javascript">
+        var user = JSON.parse(localStorage.getItem("user"));
+            if(user!=null)
+            {
+                if(user.USERNAME!="")
+                {
+                    document.getElementById("nomUser").innerHTML = user.USERNAME;
+                    document.getElementById("mailUser").innerHTML = user.MAIL;
+                }
+                else
+                {
+                    document.getElementById("username").innerHTML = "N/A";
+                    document.getElementById("mailUser").innerHTML = "N/A";
+                }
+            }
+    </script>
+</body>
+
+</html>

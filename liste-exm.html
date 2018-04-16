@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | JPro Systems | Exam Manager | eXm | Liste des Examens</title>
+    <title>Welcome To | JPro Systems | Exam Manager | eXm | Liste des Examens</title>++++
     <!-- Favicon-->
     <link rel="icon" href="logo.png" type="image/png">
 
@@ -146,7 +146,7 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Se Déconnecter</a></li>
+                            <li><a href="" onclick="Deconnexion();" ><i class="material-icons">input</i>Se Déconnecter</a></li>
                         </ul>
                     </div>
                 </div>
@@ -163,9 +163,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="#">
                             <i class="material-icons">assignment</i>
-                            <span>Examen</span>
+                            <span onclick="Deconnexion()">Examen</span>
                         </a>
                     </li>
                 </ul>
@@ -189,7 +189,7 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>
-                    EXM - EXAMEN
+                    MES EXAMENS
                 </h2>
             </div>
             <!-- Exportable Table -->
@@ -204,9 +204,9 @@
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#largeModal">
                                         <!-- <i class="material-icons">add_circle_outline</i> -->
-                                        <span style="display: inline-block; height: 50px;">
+                                        <span style="display: inline-block; padding: 5px 10px; border: 2px solid #eee;">
                                             <span class="material-icons">add_circle_outline</span>
-                                            <span style="position: relative; top: -6px;">Ajouter Examen</span>
+                                            <span style="position: relative; top: -7px;">Ajouter Examen</span>
                                         </span>
                                     </a>
                                 </li>
@@ -248,7 +248,7 @@
                 <div class="modal-dialog modal-lg" role="document" style="background-color: white;">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="largeModalLabel">Enregstrer Examen</h4>
+                            <h4 class="modal-title" id="largeModalLabel">Enregistrer Examen</h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-sm-6">
@@ -305,8 +305,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick="SubmitExam();" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                            <button type="button" onclick="SubmitExam();" class="btn btn-link waves-effect">SOUMETTRE</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">ANNULER</button>
                         </div>
                     </div>
                 </div>
@@ -439,18 +439,17 @@
                 .then((value) => {
                   switch (value) {
                     case "edit":
-                      swal("Pikachu fainted! You gained 500 XP!");
+                      swal("Vous allez Modifier");
                       break;
                     case "delt":
                         deleteExamen(codeexm);
                       break;
                     case "view":
-                      swal("Pikachu fainted! You gained 500 XP!");
+                      swal("Vous allez Voir");
                       break;
                   }
                 });
             }  
-
         }
     </script>
 
@@ -470,7 +469,6 @@
             $.get(req, function(data, status){
                 if(status=="success")
                 {
-                    alert(data)
                     if(data != "erreur")
                     {
                         swal({
@@ -517,6 +515,7 @@
         function modifySemestre()
         {
             var varSemestre = table.getElementsByTagName("semestre");
+
             var varCode = table.getElementsByTagName("code");
             var req = "http://localhost:8080/exmapi/examen/"+varSemestre+"/"+varCode+"" 
             $.get(req, function(data, status){
@@ -557,8 +556,16 @@
                 }
             }); 
         }
-    </script>    
-
+    </script>
+        
+    <script type="text/javascript">
+        function Deconnexion()
+        {
+            alert("Exec")
+            localStorage.remove("user");
+            window.location.replace("http://localhost/eXm/sign-in.html");
+        }
+    </script>
 </body>
 
 </html>

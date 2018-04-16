@@ -1,0 +1,7 @@
+{
+	"DB_RDBMS":"EXMDB",
+	"DB_HOST" :"localhost",
+	"DB_USER" :"sysdba",  
+	"DB_PASS" :"masterkey", 
+	"DB_PATH" :"C:/wamp/www/eXm/db/EXM.FDB"
+}
