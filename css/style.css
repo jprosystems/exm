@@ -2291,7 +2291,7 @@
   .demo-choose-skin .light-blue {
     background-color: #03A9F4; }
   .demo-choose-skin .cyan {
-    background-color: #00BCD4; }
+    background-color: #fff; }
   .demo-choose-skin .teal {
     background-color: #009688; }
   .demo-choose-skin .green {
@@ -3566,7 +3566,7 @@ section.content {
 
 [type="checkbox"].filled-in:checked.chk-col-cyan + label:after {
   border: 2px solid #00BCD4;
-  background-color: #00BCD4; }
+  background-color: #fff; }
 
 [type="checkbox"].filled-in:checked.chk-col-teal + label:after {
   border: 2px solid #009688;
@@ -3663,7 +3663,7 @@ section.content {
   border-color: #03A9F4; }
 
 [type="radio"].radio-col-cyan:checked + label:after {
-  background-color: #00BCD4;
+  background-color: #fff;
   border-color: #00BCD4; }
 
 [type="radio"].radio-col-teal:checked + label:after {
@@ -3771,7 +3771,7 @@ section.content {
   border: 2px solid #00BCD4; }
 
 [type="radio"].with-gap.radio-col-cyan:checked + label:after {
-  background-color: #00BCD4;
+  background-color: #fff;
   border: 2px solid #00BCD4; }
 
 [type="radio"].with-gap.radio-col-teal:checked + label:before {
@@ -3918,7 +3918,7 @@ section.content {
   .switch label input[type=checkbox]:checked + .lever.switch-col-cyan {
     background-color: rgba(0, 188, 212, 0.5); }
     .switch label input[type=checkbox]:checked + .lever.switch-col-cyan:after {
-      background-color: #00BCD4; }
+      background-color: #fff; }
   .switch label input[type=checkbox]:checked:not(:disabled) ~ .lever.switch-col-teal:active:after {
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 150, 136, 0.1); }
   .switch label input[type=checkbox]:checked + .lever.switch-col-teal {
@@ -4340,7 +4340,7 @@ section.content {
         background-color: rgba(0, 0, 0, 0.12); }
 
 .modal-col-cyan {
-  background-color: #00BCD4; }
+  background-color: #fff; }
   .modal-col-cyan .modal-body,
   .modal-col-cyan .modal-title {
     color: #fff !important; }
@@ -4830,7 +4830,7 @@ section.content {
 
 .full-body .panel-col-cyan .panel-body {
   border-top-color: #fff !important;
-  background-color: #00BCD4;
+  background-color: #fff;
   color: #fff; }
 
 .full-body .panel-col-teal .panel-body {
@@ -5675,11 +5675,11 @@ fieldset[disabled] .form-control {
   stroke: #00BCD4; }
 
 .list-group .list-group-bg-cyan {
-  background-color: #00BCD4;
+  background-color: #fff;
   border: none;
   color: #fff; }
   .list-group .list-group-bg-cyan:hover, .list-group .list-group-bg-cyan:focus {
-    background-color: #00BCD4;
+    background-color: #fff;
     color: #fff;
     opacity: 0.8; }
 
@@ -7720,7 +7720,7 @@ fieldset[disabled] .form-control {
 
 /* Login Page ================================== */
 .login-page {
-  background-color: #00BCD4;
+  background-color: #fff;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
@@ -7750,7 +7750,7 @@ fieldset[disabled] .form-control {
 
 /* Sign Up Page ================================ */
 .signup-page {
-  background-color: #00BCD4;
+  background-color: #fff;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
@@ -7780,7 +7780,7 @@ fieldset[disabled] .form-control {
 
 /* Forgot Password Page ======================== */
 .fp-page {
-  background-color: #00BCD4;
+  background-color: #fff;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
